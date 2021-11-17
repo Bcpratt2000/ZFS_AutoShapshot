@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -a pools=("Storage/disks/subvol-100-disk-0" "Storage")
+name=$(date +%d)
+
+
+for i in "${pools[@]}"
+do
+        zfs destroy $i@$name;
+        zfs snapshot -r $i@$name;
+done
